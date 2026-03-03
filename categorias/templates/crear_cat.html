@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <div class="card" style="margin: 30px;">
+        
+        <div class="card-header text-center border-3">
+            <h1 class="h4 mb-0 fw-bold">
+                {% if object %}
+                    Editar Categoría
+                {% else %}
+                    Agregar Nueva Categoría
+                {% endif %}
+            </h1>
+        </div>
+        
+        <div class="card-body">
+            <form method="POST">
+                {% csrf_token %}
+
+                <!-- Nombre -->
+                <div class="mb-3">
+                    <label class="fw-bold">
+                        {{ form.nombre.label }}
+                    </label>
+                    {{ form.nombre }}
+                    <div class="text-danger">
+                        {{ form.nombre.errors }}
+                    </div>
+                </div>
+
+                <!-- Descripción -->
+                <div class="mb-3">
+                    <label class="fw-bold">
+                        {{ form.descripcion.label }}
+                    </label>
+                    {{ form.descripcion }}
+                    <div class="text-danger">
+                        {{ form.descripcion.errors }}
+                    </div>
+                </div>
+
+                <!-- Activa (Radio Button) -->
+                <div class="mb-3">
+                    <label class="fw-bold d-block">
+                        {{ form.activa.label }}
+                    </label>
+
+                    {% for radio in form.activa %}
+                        <div class="form-check form-check-inline">
+                            {{ radio.tag }}
+                            <label class="form-check-label">
+                                {{ radio.choice_label }}
+                            </label>
+                        </div>
+                    {% endfor %}
+                </div>
+
+                <!-- Botones -->
+                <div class="d-flex justify-content-end gap-2">
+                    <button class="btn btn-primary">
+                        Guardar
+                    </button>
+
+                    <a class="btn btn-secondary"
+                       href="{% url 'lista_categorias' %}">
+                        Cancelar
+                    </a>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
