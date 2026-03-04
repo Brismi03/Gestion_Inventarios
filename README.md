@@ -36,3 +36,20 @@ También se realizo el diagrama de clases para el diseño de la BD
 <img width="426" height="967" alt="mermaid-diagram" src="https://github.com/user-attachments/assets/4f39d73a-42cf-4e7b-94d6-a9bfb1bd40d7" />
 
 **Configuración del proyecto:**
+1.Crear una carpeta para guardar el proyecto y el entorno
+2. git clone https://github.com/Brismi03/Gestion_Inventarios.git
+3. python -m venv miEntorno 
+4. cd miEntorno
+5. cd Scripts
+6. Activate
+7. Cd..
+8. cd gesInventario
+9. pip install -r requirements.txt
+10. Crea un archivo .env en la raíz del proyecto (junto a manage.py) con:
+  SECRET_KEY=tu_clave_secreta
+  DEBUG=True
+11. python manage.py migrate //Crea la BD y tablas
+12. python manage.py createsuperuser //Ingresa un usuario y contraseña con ese vas a acceder
+13. python manage.py runserver //Para ejecutar el servidor
+14. Acceder con el navegador http://127.0.0.1:8000/
+
