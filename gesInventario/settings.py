@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'categorias',
     'inventario',
     'generales',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
@@ -123,3 +124,6 @@ STATIC_URL = 'static/'
 STATICFILES_DIRS = [
     BASE_DIR / "static",
 ]
+
+LOGIN_URL = '/'
+LOGIN_REDIRECT_URL = '/dashboard/'

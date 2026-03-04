@@ -5,8 +5,11 @@ from categorias.forms import CategoriaForm
 from django.contrib import messages
 from django.views.generic import CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
+@login_required
 def lista_categorias(request):
     #Inicializar consulta de clientes
     categorias_list = Categoria.objects.all().order_by('nombre')
@@ -20,19 +23,19 @@ def lista_categorias(request):
     }
     return render(request, 'listar_cat.html', context)
 
-class CategoriaCreateView(CreateView):
+class CategoriaCreateView(LoginRequiredMixin, CreateView):
     model = Categoria
     form_class = CategoriaForm
     template_name = 'crear_cat.html'
     success_url = reverse_lazy('lista_categorias')
 
-class CategoriaUpdateView(UpdateView):
+class CategoriaUpdateView(LoginRequiredMixin, UpdateView):
     model = Categoria
     form_class = CategoriaForm
     template_name = 'crear_cat.html' 
     success_url = reverse_lazy('lista_categorias')
 
-class CategoriaDeleteView(DeleteView):
+class CategoriaDeleteView(LoginRequiredMixin,DeleteView):
     model = Categoria
     success_url = reverse_lazy('lista_categorias')
 

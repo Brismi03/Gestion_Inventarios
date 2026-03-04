@@ -93,7 +93,7 @@
             <br>
             <hr style="border-color: rgba(255, 255, 255, 0.888);" />
             <li class="nav-item">
-              <a href="{% url 'lista_prod'%}">
+              <a href="{% url 'lista_prod' %}">
                 <i class="bi bi-basket2-fill" style="color:white; font-size: 24px;"></i>
                 <p style="color:white; font-size: 15px;">Productos</p>
               </a>
@@ -117,14 +117,16 @@
                       data-bs-parent="#accordionSidebar">
 
                       <div class="bg-white py-2 rounded">
-                          <h6 class="collapse-header">Registro de:</h6>
+                          <a class="collapse-item" href="{% url 'listar_inventario' %}">
+                            <i class="bi bi-eye-fill"></i>
+                            Registros  Entradas/Salidas</a>
 
-                          <a class="collapse-item" href="#">
+                          <a class="collapse-item" href="{% url 'entrada_inventario' %}">
                             <i class="bi bi-box-arrow-in-right"></i>
-                            Entradas</a>
-                          <a class="collapse-item" href="#">
+                            Entradas formulario</a>
+                          <a class="collapse-item" href="{% url 'salida_inventario' %}">
                             <i class="bi bi-box-arrow-left"></i>
-                            Salidas</a>
+                            Salidas formulario</a>
                       </div>
                   </div>
               </li>
