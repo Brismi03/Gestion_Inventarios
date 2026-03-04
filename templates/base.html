@@ -34,9 +34,9 @@
   </script>
 
   <!-- CSS Files -->
-  <link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css'%}" />
-  <link rel="stylesheet" href="{%static 'assets/css/plugins.min.css'%}" />
-  <link rel="stylesheet" href="{%static 'assets/css/kaiadmin.min.css'%}" />
+  <link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}" />
+  <link rel="stylesheet" href="{% static 'assets/css/plugins.min.css'%}" />
+  <link rel="stylesheet" href="{% static 'assets/css/kaiadmin.min.css' %}" />
 
   <!-- CSS Just for demo purpose, don't include it in your project -->
   <link rel="stylesheet" href="{%static 'assets/css/demo.css'%}" />
@@ -50,7 +50,7 @@
         <!-- Logo Header -->
         <div class="logo-header" style="background-color:#0d6efd;">
           <a href="{% url 'home'%}" class="logo">
-            <img src="https://www.zarla.com/images/zarla-carevet-1x1-2400x2400-20210809-ctbb9btmp84tpccp4hdr.png?crop=1:1,smart&width=250&dpr=2"
+            <img src="https://cdn-icons-png.flaticon.com/512/1458/1458235.png"
                                              alt="logo" class="img-fluid me-3" style="height: 2.5rem; width: auto;" />
           </a>
           <div class="nav-toggle">
@@ -75,7 +75,7 @@
             <li class="nav-item">
               <a href="{% url 'home' %}">
                 <i class="fas fa-home" style="color:white; font-size: 24px;"></i>
-                <p style="color:white; font-size: 18px;">Inicio</p>
+                <p style="color:white; font-size: 15px;">Inicio</p>
               </a>
             </li>
 
@@ -87,30 +87,55 @@
             <li class="nav-item">
               <a href="{% url 'lista_categorias' %}">
                 <i class="bi bi-list-stars" style="color:white; font-size: 24px;"></i>
-                <p style="color:white; font-size: 18px;">Categorias</p>
+                <p style="color:white; font-size: 15px;">Categorias</p>
               </a>
             </li>
             <br>
+            <hr style="border-color: rgba(255, 255, 255, 0.888);" />
             <li class="nav-item">
               <a href="{% url 'lista_prod'%}">
                 <i class="bi bi-basket2-fill" style="color:white; font-size: 24px;"></i>
-                <p style="color:white; font-size: 18px;">Productos</p>
+                <p style="color:white; font-size: 15px;">Productos</p>
               </a>
             </li>
             <br>
+           <hr style="border-color: rgba(255, 255, 255, 0.888);" />
             <li class="nav-item">
-              <a href="#">
-                <i class="bi bi-clipboard-data-fill" style="color:white; font-size: 24px"></i>
-                <p style="color:white; font-size: 18px;">Inventario</p>
-              </a>
-            </li>
+                  <a class="nav-link collapsed"
+                    href="#"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#collapseTwo"
+                    aria-expanded="false"
+                    aria-controls="collapseTwo">
+
+                      <i class="bi bi-clipboard-data-fill" style="color:white; font-size: 24px"></i>
+                      <p style="color:white; font-size: 15px;">Inventario</p>
+                  </a>
+
+                  <div id="collapseTwo"
+                      class="collapse"
+                      data-bs-parent="#accordionSidebar">
+
+                      <div class="bg-white py-2 rounded">
+                          <h6 class="collapse-header">Registro de:</h6>
+
+                          <a class="collapse-item" href="#">
+                            <i class="bi bi-box-arrow-in-right"></i>
+                            Entradas</a>
+                          <a class="collapse-item" href="#">
+                            <i class="bi bi-box-arrow-left"></i>
+                            Salidas</a>
+                      </div>
+                  </div>
+              </li>
+
             <br>
-            <li class="nav-item">
+            <!-- <li class="nav-item">
               <a href="#">
                 <i class="fas fa-file-alt" style="color:white; font-size: 24px"></i>
                 <p style="color:white; font-size: 18px;">Generar reporte</p>
               </a>
-            </li>
+            </li> -->
 
           </ul>
         </div>
@@ -341,69 +366,7 @@
       </footer>
     </div>
 
-    <!-- Custom template | don't include it in your project! -->
-    <div class="custom-template">
-      <div class="title">Settings</div>
-      <div class="custom-content">
-        <div class="switcher">
-          <div class="switch-block">
-            <h4>Logo Header</h4>
-            <div class="btnSwitch">
-              <button type="button" class="selected changeLogoHeaderColor" data-color="dark"></button>
-              <button type="button" class="changeLogoHeaderColor" data-color="blue"></button>
-              <button type="button" class="changeLogoHeaderColor" data-color="purple"></button>
-              <button type="button" class="changeLogoHeaderColor" data-color="light-blue"></button>
-              <button type="button" class="changeLogoHeaderColor" data-color="green"></button>
-              <button type="button" class="changeLogoHeaderColor" data-color="orange"></button>
-              <button type="button" class="changeLogoHeaderColor" data-color="red"></button>
-              <button type="button" class="changeLogoHeaderColor" data-color="white"></button>
-              <br />
-              <button type="button" class="changeLogoHeaderColor" data-color="dark2"></button>
-              <button type="button" class="changeLogoHeaderColor" data-color="blue2"></button>
-              <button type="button" class="changeLogoHeaderColor" data-color="purple2"></button>
-              <button type="button" class="changeLogoHeaderColor" data-color="light-blue2"></button>
-              <button type="button" class="changeLogoHeaderColor" data-color="green2"></button>
-              <button type="button" class="changeLogoHeaderColor" data-color="orange2"></button>
-              <button type="button" class="changeLogoHeaderColor" data-color="red2"></button>
-            </div>
-          </div>
-          <div class="switch-block">
-            <h4>Navbar Header</h4>
-            <div class="btnSwitch">
-              <button type="button" class="changeTopBarColor" data-color="dark"></button>
-              <button type="button" class="changeTopBarColor" data-color="blue"></button>
-              <button type="button" class="changeTopBarColor" data-color="purple"></button>
-              <button type="button" class="changeTopBarColor" data-color="light-blue"></button>
-              <button type="button" class="changeTopBarColor" data-color="green"></button>
-              <button type="button" class="changeTopBarColor" data-color="orange"></button>
-              <button type="button" class="changeTopBarColor" data-color="red"></button>
-              <button type="button" class="selected changeTopBarColor" data-color="white"></button>
-              <br />
-              <button type="button" class="changeTopBarColor" data-color="dark2"></button>
-              <button type="button" class="changeTopBarColor" data-color="blue2"></button>
-              <button type="button" class="changeTopBarColor" data-color="purple2"></button>
-              <button type="button" class="changeTopBarColor" data-color="light-blue2"></button>
-              <button type="button" class="changeTopBarColor" data-color="green2"></button>
-              <button type="button" class="changeTopBarColor" data-color="orange2"></button>
-              <button type="button" class="changeTopBarColor" data-color="red2"></button>
-            </div>
-          </div>
-          <div class="switch-block">
-            <h4>Sidebar</h4>
-            <div class="btnSwitch">
-              <button type="button" class="changeSideBarColor" data-color="white"></button>
-              <button type="button" class="selected changeSideBarColor" data-color="dark"></button>
-              <button type="button" class="changeSideBarColor" data-color="dark2"></button>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="custom-toggle">
-        <i class="icon-settings"></i>
-      </div>
-    </div>
-    <!-- End Custom template -->
-  </div>
+   
 
 
   <!--   Core JS Files   -->
@@ -439,38 +402,6 @@
   <!-- Kaiadmin JS -->
   <script src="{%static 'assets/js/kaiadmin.min.js'%}"></script>
 
-
-  <!-- Kaiadmin DEMO methods, don't include it in your project! -->
-  <script src="{%static 'assets/js/setting-demo.js'%}"></script>
-  <script src="{%static 'assets/js/demo.js'%}"></script>
-  <script>
-    $("#lineChart").sparkline([102, 109, 120, 99, 110, 105, 115], {
-      type: "line",
-      height: "70",
-      width: "100%",
-      lineWidth: "2",
-      lineColor: "#177dff",
-      fillColor: "rgba(23, 125, 255, 0.14)",
-    });
-
-    $("#lineChart2").sparkline([99, 125, 122, 105, 110, 124, 115], {
-      type: "line",
-      height: "70",
-      width: "100%",
-      lineWidth: "2",
-      lineColor: "#f3545d",
-      fillColor: "rgba(243, 84, 93, .14)",
-    });
-
-    $("#lineChart3").sparkline([105, 103, 123, 100, 95, 105, 115], {
-      type: "line",
-      height: "70",
-      width: "100%",
-      lineWidth: "2",
-      lineColor: "#ffa534",
-      fillColor: "rgba(255, 165, 52, .14)",
-    });
-  </script>
 </body>
 
 </html>

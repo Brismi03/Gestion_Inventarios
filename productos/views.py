@@ -1,6 +1,9 @@
 from django.shortcuts import render, HttpResponse
 from django.core.paginator import Paginator
 from productos.models import Producto
+from django.views.generic import CreateView, UpdateView, DeleteView
+from productos.forms import ProductoForm
+from django.urls import reverse_lazy
 
 # Create your views here.
 def lista_prod (request): 
@@ -14,11 +17,17 @@ def lista_prod (request):
     }
     return render(request, 'listar_prod.html', context)
 
-def crear_prod(request): 
-    return HttpResponse("crear producto")
+class ProductCreateView(CreateView):
+    model = Producto
+    form_class = ProductoForm
+    template_name = 'crear_prod.html'
+    success_url = reverse_lazy('lista_prod')
 
-def editar_prod(request): 
-    return HttpResponse("editar producto")
+class ProductUpdateView(UpdateView):
+    model = Producto
+    form_class = ProductoForm
+    template_name = 'crear_prod.html'
+    success_url = reverse_lazy('lista_prod')
 
 def eliminar_prod(request):
     return HttpResponse("elimnar producto")

@@ -1,9 +1,9 @@
 from django.urls import path
-from productos.views import lista_prod, crear_prod, editar_prod, eliminar_prod
+from productos.views import lista_prod, ProductCreateView, ProductUpdateView, eliminar_prod
 
 urlpatterns = [
     path('listar', lista_prod, name='lista_prod'), 
-    path('crear', crear_prod, name='crear_prod'),
-    path('editar', editar_prod, name='editar_prod'),
+    path('crear', ProductCreateView.as_view(), name='crear_prod'),
+    path('editar/<int:pk>/', ProductUpdateView.as_view(), name='editar_prod'),
     path('eliminar', eliminar_prod, name='eliminar_prod')
 ]
