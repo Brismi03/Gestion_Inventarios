@@ -9,10 +9,12 @@ from categorias.models import Categoria
 from django.db.models import Sum
 from django.utils import timezone
 from django.core.paginator import Paginator
+from django.contrib.auth.decorators import login_required
 # Create your views here.
+@login_required
 def home (request):
 
-    hoy = timezone.now().date()
+    hoy = timezone.localdate()
      # Filtro por categoría
     categoria_id = request.GET.get("categoria")
     productos = Producto.objects.all()
@@ -30,6 +32,13 @@ def home (request):
         tipo='salida',
         fecha__date=hoy
     ).aggregate(total=Sum('cantidad'))['total'] or 0
+
+    print("HOY:", hoy)
+    print(
+        MovimientoInventario.objects.filter(
+            fecha__date=hoy
+        ).values("fecha", "tipo", "cantidad")
+    )
 
     # Paginación
     paginator = Paginator(productos, 5)

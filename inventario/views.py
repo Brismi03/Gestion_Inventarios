@@ -27,12 +27,12 @@ class EntradaInventarioCreateView(LoginRequiredMixin, CreateView):
     template_name = 'inventario_form.html'
     success_url = reverse_lazy('listar_inventario')
     def get_initial(self):
-        return {'tipo': 'Entrada'}
+        return {'tipo': 'entrada'}
 
     def form_valid(self, form):
         movimiento = form.save(commit=False)
         movimiento.usuario = self.request.user
-        movimiento.tipo = 'Entrada'
+        movimiento.tipo = 'entrada'
 
         producto = movimiento.producto
 
@@ -49,12 +49,12 @@ class SalidaInventarioCreateView(LoginRequiredMixin, CreateView):
     template_name = 'inventario_form.html'
     success_url = reverse_lazy('listar_inventario')
     def get_initial(self):
-        return {'tipo': 'Salida'}
+        return {'tipo': 'ealida'}
     
     def form_valid(self, form):
         movimiento = form.save(commit=False)
         movimiento.usuario = self.request.user
-        movimiento.tipo = 'Salida'
+        movimiento.tipo = 'salida'
 
         producto = movimiento.producto
 
