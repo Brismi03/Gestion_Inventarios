@@ -41,9 +41,44 @@
                                     <i class="bi bi-pencil-square"></i>
                                 </a>
                                 <a href="#"
-                                    class="btn btn-link text-danger" title="Eliminar">
+                                    class="btn btn-link text-danger"
+                                    data-bs-toggle="modal"
+                                    data-bs-target="#deleteModal{{ producto.id }}"
+                                    title="Eliminar">
                                     <i class="bi bi-trash-fill"></i>
                                 </a>
+                                <!-- modal para eliminar Producto -->
+                                 <div class="modal fade" id="deleteModal{{ producto.id }}" tabindex="-1">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" style="text-align: center;">Confirmar eliminación</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                                        </div>
+
+                                        <div class="modal-body">
+                                            ¿Estas seguro que deseas eliminar el producto 
+                                            <strong>{{ producto.nombre }}</strong>?
+                                        </div>
+
+                                        <div class="modal-footer">
+                                            <form method="POST" action="{% url 'eliminar_prod' producto.id %}">
+                                            {% csrf_token %}
+                                            <button type="submit" class="btn btn-danger">
+                                                Sí, eliminar
+                                            </button>
+                                            </form>
+
+                                            <button type="button" 
+                                                    class="btn btn-secondary" 
+                                                    data-bs-dismiss="modal">
+                                                Cancelar
+                                            </button>
+                                        </div>
+
+                                        </div>
+                                    </div>
+                                </div>
                             </td>
                         </tr>
                         {% endfor %}

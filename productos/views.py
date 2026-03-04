@@ -1,4 +1,4 @@
-from django.shortcuts import render, HttpResponse
+from django.shortcuts import render, HttpResponse, get_object_or_404, redirect
 from django.core.paginator import Paginator
 from productos.models import Producto
 from django.views.generic import CreateView, UpdateView, DeleteView
@@ -10,7 +10,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 # Create your views here.
 @login_required
 def lista_prod (request): 
-    producto_list = Producto.objects.all()
+    producto_list = Producto.objects.filter(activo=True)
 
     paginator = Paginator(producto_list, 5)
     page_number = request.GET.get('page')
@@ -32,5 +32,9 @@ class ProductUpdateView(LoginRequiredMixin, UpdateView):
     template_name = 'crear_prod.html'
     success_url = reverse_lazy('lista_prod')
 
-def eliminar_prod(request):
-    return HttpResponse("elimnar producto")
+@login_required
+def eliminar_producto(request, id):
+    producto = get_object_or_404(Producto, id=id)
+    producto.activo = False
+    producto.save()
+    return redirect('lista_prod')

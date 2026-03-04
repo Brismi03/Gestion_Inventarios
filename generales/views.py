@@ -17,7 +17,7 @@ def home (request):
     hoy = timezone.localdate()
      # Filtro por categoría
     categoria_id = request.GET.get("categoria")
-    productos = Producto.objects.all()
+    productos = Producto.objects.filter(activo=True)
 
     if categoria_id:
         productos = productos.filter(categoria_id=categoria_id)
@@ -68,10 +68,10 @@ def login_view(request):
         user = authenticate(request, username=username, password=password)
 
         if user is not None:
-            # 🔐 Crear sesión clásica
+            # Crear sesión clásica
             login(request, user)
 
-            # 🔑 Generar JWT
+            # Generar JWT
             refresh = RefreshToken.for_user(user)
 
             return JsonResponse({
