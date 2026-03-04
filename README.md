@@ -36,7 +36,7 @@ También se realizo el diagrama de clases para el diseño de la BD
 <img width="426" height="967" alt="mermaid-diagram" src="https://github.com/user-attachments/assets/4f39d73a-42cf-4e7b-94d6-a9bfb1bd40d7" />
 
 **Configuración del proyecto:**
-1.Crear una carpeta para guardar el proyecto y el entorno
+1. Crear una carpeta para guardar el proyecto y el entorno
 2. git clone https://github.com/Brismi03/Gestion_Inventarios.git
 3. python -m venv miEntorno 
 4. cd miEntorno
