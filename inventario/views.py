@@ -28,6 +28,11 @@ class EntradaInventarioCreateView(LoginRequiredMixin, CreateView):
     success_url = reverse_lazy('listar_inventario')
     def get_initial(self):
         return {'tipo': 'entrada'}
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['titulo'] = 'Registrar Entrada de Inventario'
+        return context
 
     def form_valid(self, form):
         movimiento = form.save(commit=False)
@@ -49,7 +54,12 @@ class SalidaInventarioCreateView(LoginRequiredMixin, CreateView):
     template_name = 'inventario_form.html'
     success_url = reverse_lazy('listar_inventario')
     def get_initial(self):
-        return {'tipo': 'ealida'}
+        return {'tipo': 'salida'}
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['titulo'] = 'Registrar Salida de Inventario'
+        return context
     
     def form_valid(self, form):
         movimiento = form.save(commit=False)
